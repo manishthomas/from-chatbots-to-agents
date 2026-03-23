@@ -1,0 +1,1369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Chatbots to AI Agents</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --background-color: #0d1117;
+      --section-divider-bg: #0d1117;
+      --heading-font: 'Inter', Helvetica, sans-serif;
+      --body-font: 'Inter', Helvetica, sans-serif;
+      --base-font-size: 28px;
+      --text-size: 15pt;
+      --h1-size: 46pt;
+      --h2-size: 27pt;
+      --h3-size: 20pt;
+      --primary-color: #388bfd;
+      --secondary-color: #7ee787;
+      --text-color: #e6edf3;
+      --muted-color: #8b949e;
+      --line-color: #30363d;
+      --slide-padding: 52px;
+      --slide-padding-top: 36px;
+      --content-gap: 18px;
+      --box-radius: 8px;
+    }
+
+    .reveal-viewport { background-color: #0d1117; }
+    .reveal h2 { margin-bottom: 0; font-size: 27pt; }
+    .reveal ul li::before { background: #388bfd; width: 6px; height: 6px; top: 0.65em; }
+
+    .reveal .slides section.section-divider {
+      justify-content: center; align-items: center; text-align: center;
+    }
+    .reveal .slides section.section-divider h1 { font-size: 48pt; color: #e6edf3; }
+
+    .reveal blockquote {
+      border-left: 3px solid var(--primary-color);
+      background: none; box-shadow: none;
+      width: 100%; max-width: none;
+      margin: 14px 0; padding-left: 16px;
+    }
+    .reveal blockquote p { font-style: italic; }
+    .reveal blockquote cite { color: #8b949e; font-size: 11pt; font-style: normal; display: block; margin-top: 6px; }
+
+    .reveal .fragment { opacity: 0; transition: opacity 0.3s ease; }
+    .reveal .fragment.visible { opacity: 1; }
+    .reveal .fragment.fade-up { transform: translateY(14px); transition: opacity 0.35s ease, transform 0.35s ease; }
+    .reveal .fragment.fade-up.visible { transform: translateY(0); }
+    .reveal .fragment.fade-right { transform: translateX(-14px); transition: opacity 0.35s ease, transform 0.35s ease; }
+    .reveal .fragment.fade-right.visible { transform: translateX(0); }
+    .reveal .fragment.fade-left { transform: translateX(14px); transition: opacity 0.35s ease, transform 0.35s ease; }
+    .reveal .fragment.fade-left.visible { transform: translateX(0); }
+
+    .reveal code { font-family: 'JetBrains Mono', monospace; font-size: 10pt; }
+    .reveal .progress { color: #388bfd; }
+    .reveal .slide-number { background: transparent; color: #8b949e; font-family: monospace; font-size: 11pt; }
+    .reveal .controls .navigate-left.enabled,
+    .reveal .controls .navigate-right.enabled,
+    .reveal .controls .navigate-up.enabled,
+    .reveal .controls .navigate-down.enabled { color: #388bfd; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+
+<!-- ═══════════════════════════════════
+     SLIDE 1: TITLE
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider"
+  data-background-gradient="linear-gradient(135deg,#0d1117 0%,#0d1b2a 60%,#111827 100%)">
+  <div style="text-align:center;">
+    <p style="color:#7ee787;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+       font-family:'JetBrains Mono',monospace;margin-bottom:18px;">Software Engineering · 2026</p>
+    <h1 style="font-size:50pt;line-height:1.15;color:#e6edf3;margin-bottom:18px;">
+      From Chatbots<br>to <span style="color:#79c0ff;">AI Agents</span>
+    </h1>
+    <p style="color:#8b949e;font-size:16pt;font-weight:300;">
+      Generating → Doing → Coordinating
+    </p>
+  </div>
+  <aside class="notes">
+    Most of us already use AI to help us.
+    But something important is changing.
+    AI is starting to do the work, not just suggest it.
+    That is what we will explore today.
+    [[ press S anytime to see these notes ]]
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     SECTION: THE EVOLUTION
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider">
+  <p style="color:#7ee787;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 01</p>
+  <h1>The Evolution</h1>
+  <p style="color:#8b949e;font-size:15pt;">From generating text to taking action</p>
+  <aside class="notes">
+    [[ chapter opener — no need to say anything, just advance ]]
+  </aside>
+</section>
+
+<section>
+
+  <!-- Generative AI -->
+  <section>
+    <h2>Generative AI</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+        <div>
+          <p style="color:#7ee787;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">WHAT IT DOES</p>
+          <ul>
+            <li class="fragment fade-up">Generates responses based on patterns</li>
+            <li class="fragment fade-up">One input → one output</li>
+            <li class="fragment fade-up">ChatGPT, Copilot, Gemini</li>
+          </ul>
+        </div>
+        <div class="fragment fade-up">
+          <p style="color:#d29922;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">EXAMPLE</p>
+          <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px;">
+            <p style="color:#8b949e;font-size:13pt;margin:0 0 8px 0;">You ask:</p>
+            <p style="color:#e6edf3;font-size:15pt;font-weight:600;margin:0 0 14px 0;">"Plan a trip to Japan"</p>
+            <p style="color:#8b949e;font-size:13pt;margin:0 0 6px 0;">It gives suggestions.</p>
+            <p style="color:#f47067;font-size:12pt;margin:0;">But <strong>you</strong> still book the flights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      You ask: plan a trip.
+      It gives suggestions.
+      But you still book flights and hotels.
+      That is the limitation — it answers, but it cannot act.
+      [[ pause on "you still book the flights" — that red line is the point ]]
+    </aside>
+  </section>
+
+  <!-- The Core Shift -->
+  <section>
+    <h2>The Core Shift</h2>
+    <div class="content">
+      <div style="display:flex;align-items:center;gap:0;margin-bottom:22px;">
+        <div class="fragment fade-right" style="flex:1;background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:20px;text-align:center;">
+          <i class="fa-solid fa-comment" style="color:#8b949e;font-size:22pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#8b949e;font-size:10pt;margin:0;text-transform:uppercase;letter-spacing:.1em;">Old AI</p>
+          <p style="font-size:20pt;color:#e6edf3;margin:6px 0 0 0;font-weight:600;">Helps</p>
+          <p style="color:#8b949e;font-size:10pt;margin:4px 0 0 0;">Answers your question</p>
+        </div>
+        <div class="fragment fade-up" style="padding:0 16px;font-size:24pt;color:#388bfd;">→</div>
+        <div class="fragment fade-right" style="flex:1;background:#0d2137;border:1px solid #388bfd;
+             border-radius:8px;padding:20px;text-align:center;">
+          <i class="fa-solid fa-gears" style="color:#388bfd;font-size:22pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#388bfd;font-size:10pt;margin:0;text-transform:uppercase;letter-spacing:.1em;">AI Agent</p>
+          <p style="font-size:20pt;color:#e6edf3;margin:6px 0 0 0;font-weight:600;">Does</p>
+          <p style="color:#8b949e;font-size:10pt;margin:4px 0 0 0;">Takes action, checks results</p>
+        </div>
+        <div class="fragment fade-up" style="padding:0 16px;font-size:24pt;color:#3fb950;">→</div>
+        <div class="fragment fade-right" style="flex:1;background:#0d2914;border:1px solid #3fb950;
+             border-radius:8px;padding:20px;text-align:center;">
+          <i class="fa-solid fa-network-wired" style="color:#3fb950;font-size:22pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#3fb950;font-size:10pt;margin:0;text-transform:uppercase;letter-spacing:.1em;">Multi-Agent</p>
+          <p style="font-size:20pt;color:#e6edf3;margin:6px 0 0 0;font-weight:600;">Coordinates</p>
+          <p style="color:#8b949e;font-size:10pt;margin:4px 0 0 0;">Orchestrates entire systems</p>
+        </div>
+      </div>
+      <blockquote class="fragment fade-up">
+        <p style="color:#d29922;font-size:13pt;margin:0;">AI moved from answering → doing → coordinating. That changes who is responsible for the outcome.</p>
+      </blockquote>
+    </div>
+    <aside class="notes">
+      Old AI answers. Agent AI does. Multi-Agent coordinates.
+      [[ click through each card slowly — let the audience read each one ]]
+      The shift is not just in capability — it is in who owns the outcome.
+      [[ wait for the blockquote to land before moving on ]]
+    </aside>
+  </section>
+
+  <!-- One Example — Four Levels -->
+  <section>
+    <h2>One Example — Four Levels of AI</h2>
+    <div class="content">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="fragment fade-up" style="display:flex;align-items:center;gap:16px;
+             background:#161b22;border:1px solid #30363d;border-left:3px solid #8b949e;
+             border-radius:8px;padding:14px 18px;">
+          <div style="min-width:136px;flex-shrink:0;">
+            <p style="color:#8b949e;font-size:11pt;font-weight:600;margin:0;font-family:'JetBrains Mono',monospace;">GENERATIVE AI</p>
+          </div>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Suggests a travel plan — <span style="color:#8b949e;">you still do the work</span></p>
+        </div>
+        <div class="fragment fade-up" style="display:flex;align-items:center;gap:16px;
+             background:#0d2137;border:1px solid #388bfd;border-left:3px solid #388bfd;
+             border-radius:8px;padding:14px 18px;">
+          <div style="min-width:136px;flex-shrink:0;">
+            <p style="color:#388bfd;font-size:11pt;font-weight:600;margin:0;font-family:'JetBrains Mono',monospace;">AI AGENT</p>
+          </div>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Executes a specific task — <span style="color:#388bfd;">books the flights</span></p>
+        </div>
+        <div class="fragment fade-up" style="display:flex;align-items:center;gap:16px;
+             background:#0d2914;border:1px solid #3fb950;border-left:3px solid #3fb950;
+             border-radius:8px;padding:14px 18px;">
+          <div style="min-width:136px;flex-shrink:0;">
+            <p style="color:#3fb950;font-size:11pt;font-weight:600;margin:0;font-family:'JetBrains Mono',monospace;">AGENTIC AI</p>
+          </div>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Manages the full workflow — <span style="color:#3fb950;">flights, hotels, itinerary end-to-end</span></p>
+        </div>
+        <div class="fragment fade-up" style="display:flex;align-items:center;gap:16px;
+             background:#1b1030;border:1px solid #bc8cff;border-left:3px solid #bc8cff;
+             border-radius:8px;padding:14px 18px;">
+          <div style="min-width:136px;flex-shrink:0;">
+            <p style="color:#bc8cff;font-size:11pt;font-weight:600;margin:0;font-family:'JetBrains Mono',monospace;">MULTI-AGENT</p>
+          </div>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Multiple agents collaborate — <span style="color:#bc8cff;">each handles a different part</span></p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ reveal each row one click at a time ]]
+      Generative AI gives suggestions. You still do the work.
+      AI Agent executes a specific task — books the flights.
+      Agentic AI goes further. You give a goal, it handles everything end-to-end.
+      Multi-agent splits the work — one agent per part, running in parallel.
+      [[ analogy to say out loud: ]]
+      Agentic AI is one developer doing everything.
+      Multi-agent is a team of developers working together.
+      Use agentic when the workflow is simple enough for one system.
+      Use multi-agent when it is complex, needs specialists, or needs to run in parallel.
+      [[ multi-agent = more powerful, but also more complex to build ]]
+    </aside>
+  </section>
+
+</section><!-- end evolution stack -->
+
+
+<!-- ═══════════════════════════════════
+     SECTION: AI AGENTS
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider">
+  <p style="color:#388bfd;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 02</p>
+  <h1>AI Agents</h1>
+  <p style="color:#8b949e;font-size:15pt;">What makes something an "agent"?</p>
+  <aside class="notes">[[ chapter opener ]]</aside>
+</section>
+
+<section>
+
+  <!-- What Makes an Agent -->
+  <section>
+    <h2>What Makes an AI an <span style="color:#388bfd;">Agent</span>?</h2>
+    <div class="content">
+      <p style="color:#8b949e;font-size:12pt;margin-bottom:14px;">Four things that separate an agent from a chatbot:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #388bfd;border-radius:8px;padding:16px;">
+          <p style="color:#388bfd;font-size:10pt;margin:0 0 5px 0;font-family:'JetBrains Mono',monospace;">01 / TOOLS</p>
+          <p style="font-size:13pt;color:#e6edf3;margin:0;">Can call APIs, run code, read files</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #3fb950;border-radius:8px;padding:16px;">
+          <p style="color:#3fb950;font-size:10pt;margin:0 0 5px 0;font-family:'JetBrains Mono',monospace;">02 / LOOP</p>
+          <p style="font-size:13pt;color:#e6edf3;margin:0;">Thinks → Acts → Observes → Repeats</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #d29922;border-radius:8px;padding:16px;">
+          <p style="color:#d29922;font-size:10pt;margin:0 0 5px 0;font-family:'JetBrains Mono',monospace;">03 / GOAL</p>
+          <p style="font-size:13pt;color:#e6edf3;margin:0;">Pursues an objective, doesn't just respond</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #f47067;border-radius:8px;padding:16px;">
+          <p style="color:#f47067;font-size:10pt;margin:0 0 5px 0;font-family:'JetBrains Mono',monospace;">04 / MEMORY</p>
+          <p style="font-size:13pt;color:#e6edf3;margin:0;">Retains context across steps</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      A chatbot answers once and stops.
+      An agent keeps going until the job is done.
+      [[ click through each card — tools, loop, goal, memory ]]
+      The loop is the most important one. That is what makes it fundamentally different.
+    </aside>
+  </section>
+
+  <!-- Agents in Production -->
+  <section>
+    <h2>Agents Already in Production</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:20px;text-align:center;">
+          <i class="fa-solid fa-code" style="color:#388bfd;font-size:22pt;margin-bottom:10px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:13pt;font-weight:600;margin:0 0 8px 0;">Dev Tooling</p>
+          <p style="color:#8b949e;font-size:11pt;margin:0;">Claude Code and Cursor write, fix, and test code autonomously</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:20px;text-align:center;">
+          <i class="fa-solid fa-briefcase" style="color:#3fb950;font-size:22pt;margin-bottom:10px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:13pt;font-weight:600;margin:0 0 8px 0;">Business Ops</p>
+          <p style="color:#8b949e;font-size:11pt;margin:0;">Salesforce Agentforce handles queries, updates CRM, books meetings</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:20px;text-align:center;">
+          <i class="fa-solid fa-user" style="color:#d29922;font-size:22pt;margin-bottom:10px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:13pt;font-weight:600;margin:0 0 8px 0;">Personal</p>
+          <p style="color:#8b949e;font-size:11pt;margin:0;">Google Project Mariner browses, fills forms, and books travel for you</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      These are all shipping today — not demos, not research.
+      Dev tooling is where we feel it most directly as engineers.
+      Business ops has the fastest return on investment right now.
+      Personal agents are early — but they are moving fast.
+      [[ ask the audience: which of these have you used this week? ]]
+    </aside>
+  </section>
+
+</section><!-- end agents stack -->
+
+
+<!-- ═══════════════════════════════════
+     SECTION: AGENTIC AI
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider">
+  <p style="color:#3fb950;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 03</p>
+  <h1>Agentic AI</h1>
+  <p style="color:#8b949e;font-size:15pt;">When AI pursues goals, not just tasks</p>
+  <aside class="notes">[[ chapter opener ]]</aside>
+</section>
+
+<section>
+
+  <!-- Agent vs Agentic -->
+  <section>
+    <h2>Agent vs. Agentic</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+        <div>
+          <p style="color:#388bfd;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">AI AGENT</p>
+          <ul>
+            <li class="fragment fade-up">Given a <strong>specific task</strong></li>
+            <li class="fragment fade-up">Has a <strong>defined end point</strong></li>
+            <li class="fragment fade-up"><em>"Search these docs and summarise"</em></li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:#3fb950;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">AGENTIC AI</p>
+          <ul>
+            <li class="fragment fade-up">Given a <strong>broad goal</strong></li>
+            <li class="fragment fade-up"><strong>Plans its own steps</strong></li>
+            <li class="fragment fade-up"><em>"Launch this feature by Friday"</em></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fragment fade-up" style="margin-top:20px;background:#161b22;border:1px solid #30363d;
+           border-radius:8px;padding:16px;">
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          <strong>Analogy:</strong> An agent is like a contractor who builds what you spec.
+          <span style="color:#3fb950;">Agentic AI is like a project manager</span> — it hires, specs, and delivers.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      An agent does what you tell it, step by step.
+      Agentic AI breaks the goal into steps itself — that is the difference.
+      [[ read the analogy out loud — contractor vs project manager ]]
+      One builds what you spec. The other specs it, hires, and delivers.
+    </aside>
+  </section>
+
+  <!-- Demo 1: Developer vs Agent + Terminal -->
+  <section>
+    <h2><span style="color:#d29922;">Demo</span> — Agentic Coding</h2>
+    <div class="content">
+      <div style="background:#0d2137;border:1px solid #388bfd;border-radius:8px;
+           padding:10px 16px;margin-bottom:12px;display:flex;align-items:center;gap:12px;">
+        <p style="color:#388bfd;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0;flex-shrink:0;">GOAL</p>
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">"Fix all TypeScript errors and get all tests passing — I don't care how"</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;">
+        <!-- Left: Manual -->
+        <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px;">
+          <p style="color:#f47067;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 10px 0;">👨‍💻 DEVELOPER — MANUALLY</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#8b949e;font-size:11pt;min-width:18px;">1.</span>
+              <p style="color:#8b949e;font-size:11pt;margin:0;">Open each file manually</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#8b949e;font-size:11pt;min-width:18px;">2.</span>
+              <p style="color:#8b949e;font-size:11pt;margin:0;">Read and understand the error</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#8b949e;font-size:11pt;min-width:18px;">3.</span>
+              <p style="color:#8b949e;font-size:11pt;margin:0;">Fix the type, save, re-run tsc</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#8b949e;font-size:11pt;min-width:18px;">4.</span>
+              <p style="color:#8b949e;font-size:11pt;margin:0;">Repeat for all 47 errors…</p>
+            </div>
+            <div class="fragment fade-up" style="margin-top:6px;padding:8px 10px;background:#2d0e0e;
+                 border-radius:6px;border:1px solid #f47067;">
+              <p style="color:#f47067;font-size:12pt;margin:0;font-weight:600;">⏱ 2–3 hours</p>
+            </div>
+          </div>
+        </div>
+        <!-- Right: Agent -->
+        <div style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px;">
+          <p style="color:#7ee787;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 10px 0;">🤖 AGENT — AUTONOMOUS</p>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#388bfd;font-size:12pt;">→</span>
+              <p style="color:#8b949e;font-size:11pt;margin:0;">Scanning all files...</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#3fb950;font-size:12pt;">→</span>
+              <p style="color:#8b949e;font-size:11pt;margin:0;">Fixing errors in batches...</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#d29922;font-size:12pt;">→</span>
+              <p style="color:#8b949e;font-size:11pt;margin:0;">Tests failing — adjusting...</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;">
+              <span style="color:#7ee787;font-size:12pt;">✓</span>
+              <p style="color:#7ee787;font-size:11pt;margin:0;font-weight:600;">All 47 errors resolved</p>
+            </div>
+            <div class="fragment fade-up" style="margin-top:6px;padding:8px 10px;background:#0d2914;
+                 border-radius:6px;border:1px solid #3fb950;">
+              <p style="color:#3fb950;font-size:12pt;margin:0;font-weight:600;">⏱ ~4 minutes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Terminal strip -->
+      <div class="fragment fade-up" style="background:#010409;border:1px solid #30363d;
+           border-radius:8px;padding:12px 16px;font-family:'JetBrains Mono',monospace;">
+        <p style="color:#7ee787;font-size:9pt;margin:0 0 5px 0;">$ claude --agent fix-types ./src</p>
+        <p style="color:#388bfd;font-size:9pt;margin:2px 0;">→ Scanning 47 errors across 12 files...</p>
+        <p style="color:#8b949e;font-size:9pt;margin:2px 0;">→ Fixing UserCard.tsx — prop type mismatch</p>
+        <p style="color:#d29922;font-size:9pt;margin:2px 0;">→ Tests failing (3) — adjusting strategy...</p>
+        <p style="color:#8b949e;font-size:9pt;margin:2px 0;">→ Retrying with updated type signature...</p>
+        <p style="color:#7ee787;font-size:9pt;margin:2px 0 0 0;">✓ All 47 errors resolved. Tests passing. PR ready.</p>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ point at the GOAL bar at the top ]]
+      Notice the goal is open-ended — "I don't care how."
+      That is what makes this agentic, not just automated.
+      A chatbot answers once and stops.
+      This agent scans, acts, tests, fails, adjusts, and retries until the goal is met.
+      [[ point at the terminal strip ]]
+      The loop is the key difference — it changes strategy when tests fail.
+    </aside>
+  </section>
+
+  <!-- Demo 2: Business Workflow -->
+  <section>
+    <h2><span style="color:#d29922;">Demo 2</span> — Business Workflow</h2>
+    <div class="content">
+      <p style="color:#8b949e;font-size:12pt;margin-bottom:14px;">
+        Goal: <em style="color:#e6edf3;">"Prepare our competitive analysis for Q2 planning"</em>
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px;">
+        <div class="fragment fade-up" style="text-align:center;background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:12px 6px;">
+          <i class="fa-solid fa-magnifying-glass" style="color:#388bfd;font-size:14pt;margin-bottom:5px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:10pt;margin:0;font-weight:600;">Search</p>
+          <p style="color:#8b949e;font-size:9pt;margin:3px 0 0 0;">Competitor news &amp; pricing</p>
+        </div>
+        <div class="fragment fade-up" style="text-align:center;background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:12px 6px;">
+          <i class="fa-brands fa-google-drive" style="color:#3fb950;font-size:14pt;margin-bottom:5px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:10pt;margin:0;font-weight:600;">Drive</p>
+          <p style="color:#8b949e;font-size:9pt;margin:3px 0 0 0;">Pulls last quarter's reports</p>
+        </div>
+        <div class="fragment fade-up" style="text-align:center;background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:12px 6px;">
+          <i class="fa-solid fa-chart-bar" style="color:#d29922;font-size:14pt;margin-bottom:5px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:10pt;margin:0;font-weight:600;">Analyse</p>
+          <p style="color:#8b949e;font-size:9pt;margin:3px 0 0 0;">Spots gaps &amp; trends</p>
+        </div>
+        <div class="fragment fade-up" style="text-align:center;background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:12px 6px;">
+          <i class="fa-solid fa-file-lines" style="color:#f47067;font-size:14pt;margin-bottom:5px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:10pt;margin:0;font-weight:600;">Write</p>
+          <p style="color:#8b949e;font-size:9pt;margin:3px 0 0 0;">Structured report</p>
+        </div>
+        <div class="fragment fade-up" style="text-align:center;background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:12px 6px;">
+          <i class="fa-brands fa-slack" style="color:#bc8cff;font-size:14pt;margin-bottom:5px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:10pt;margin:0;font-weight:600;">Notify</p>
+          <p style="color:#8b949e;font-size:9pt;margin:3px 0 0 0;">Posts to Slack</p>
+        </div>
+      </div>
+      <div class="fragment fade-up" style="background:#0d2137;border:1px solid #388bfd;
+           border-radius:8px;padding:12px 18px;display:flex;align-items:center;gap:14px;">
+        <i class="fa-solid fa-clock" style="color:#388bfd;font-size:18pt;flex-shrink:0;"></i>
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          Old way: analyst spends <strong>3–4 hours</strong> across tabs.<br>
+          Agent way: <strong>18 minutes</strong>. You add judgment and context.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ point at goal line at top of slide ]]
+      Not replacing the analyst — augmenting them.
+      The analyst still adds judgment, relationships, and context.
+      The 3 hours of gathering becomes 18 minutes.
+      [[ if audience looks sceptical: this is already happening at Salesforce, HubSpot, and Notion ]]
+    </aside>
+  </section>
+
+</section><!-- end agentic stack -->
+
+
+<!-- ═══════════════════════════════════
+     SECTION: MCP
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider">
+  <p style="color:#d29922;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 04</p>
+  <h1>MCP</h1>
+  <p style="color:#8b949e;font-size:15pt;">How agents connect to real systems</p>
+  <aside class="notes">[[ chapter opener — MCP is unglamorous but critical, set that tone ]]</aside>
+</section>
+
+<section>
+
+  <!-- MCP Simple -->
+  <section>
+    <h2>MCP in Plain English</h2>
+    <div class="content">
+      <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:24px;">
+        <div style="background:#0d2137;border:2px solid #388bfd;border-radius:8px;
+             padding:20px 28px;text-align:center;min-width:150px;">
+          <i class="fa-solid fa-robot" style="color:#388bfd;font-size:26pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#388bfd;font-size:13pt;font-weight:600;margin:0;">AI Agent</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">Claude, Cursor, your app</p>
+        </div>
+        <div style="padding:0 24px;text-align:center;">
+          <p style="color:#d29922;font-size:30pt;margin:0;line-height:1;">→</p>
+          <p style="color:#d29922;font-size:11pt;font-family:'JetBrains Mono',monospace;
+             margin:0;letter-spacing:.1em;">MCP</p>
+        </div>
+        <div style="background:#2d1b00;border:2px solid #d29922;border-radius:8px;
+             padding:20px 28px;text-align:center;min-width:150px;">
+          <i class="fa-solid fa-plug" style="color:#d29922;font-size:26pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#d29922;font-size:13pt;font-weight:600;margin:0;">Tools</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">GitHub · Database · Slack</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:16px;">
+          <p style="color:#f47067;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 8px 0;">BEFORE MCP</p>
+          <ul style="margin:0;">
+            <li style="font-size:12pt;">Every tool needs custom code</li>
+            <li style="font-size:12pt;">Switch AI provider? Rebuild everything</li>
+            <li style="font-size:12pt;">Months of integration work</li>
+          </ul>
+        </div>
+        <div class="fragment fade-up" style="background:#0d2914;border:1px solid #3fb950;
+             border-radius:8px;padding:16px;">
+          <p style="color:#3fb950;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 8px 0;">WITH MCP</p>
+          <ul style="margin:0;">
+            <li style="font-size:12pt;">Build a tool once</li>
+            <li style="font-size:12pt;">Any AI can use it immediately</li>
+            <li style="font-size:12pt;">Like USB-C for AI — plug and play</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      MCP connects AI to real systems — that is the one-line explanation.
+      Without MCP, an agent is just a chatbot with ambitions.
+      [[ point at the AI → MCP → Tools diagram ]]
+      Before MCP, every connection needed custom code. Now you build once and any AI can use it.
+    </aside>
+  </section>
+
+  <!-- MCP Architecture -->
+  <section>
+    <h2>MCP — How It Works</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin-bottom:22px;">
+        <div style="background:#0d2137;border:2px solid #388bfd;border-radius:8px;padding:16px;text-align:center;">
+          <i class="fa-solid fa-robot" style="color:#388bfd;font-size:22pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#388bfd;font-size:12pt;font-weight:600;margin:0;">MCP Client</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">Claude, Cursor, your app</p>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#d29922;font-size:22pt;margin:0;line-height:1;">⇌</p>
+          <p style="color:#8b949e;font-size:8pt;margin:2px 0 0 0;font-family:'JetBrains Mono',monospace;">JSON-RPC</p>
+        </div>
+        <div style="background:#2d1b00;border:2px solid #d29922;border-radius:8px;padding:16px;text-align:center;">
+          <i class="fa-solid fa-server" style="color:#d29922;font-size:22pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#d29922;font-size:12pt;font-weight:600;margin:0;">MCP Server</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">Tool wrapper you build</p>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#3fb950;font-size:22pt;margin:0;line-height:1;">→</p>
+          <p style="color:#8b949e;font-size:8pt;margin:2px 0 0 0;font-family:'JetBrains Mono',monospace;">native API</p>
+        </div>
+        <div style="background:#0d2914;border:2px solid #3fb950;border-radius:8px;padding:16px;text-align:center;">
+          <i class="fa-solid fa-database" style="color:#3fb950;font-size:22pt;margin-bottom:8px;display:block;"></i>
+          <p style="color:#3fb950;font-size:12pt;font-weight:600;margin:0;">Your Tools / Data</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">GitHub · Database · Slack</p>
+        </div>
+      </div>
+      <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 18px;">
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          Build your company's internal MCP server once —
+          <span style="color:#d29922;">every AI that comes along can plug straight in.</span>
+          Switch models, keep your integrations.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ walk across the diagram left to right ]]
+      Client is the AI. Server is the wrapper you build. Data is whatever you connect to.
+      Everything talks over JSON-RPC — a standard protocol, like HTTP for the web.
+      Build the server once. Every AI that comes along can plug in.
+      [[ key message: switch models, keep your integrations ]]
+    </aside>
+  </section>
+
+  <!-- MCP Ecosystem -->
+  <section>
+    <h2>MCP — From Niche to Standard in 12 Months</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+        <div class="fragment fade-up" style="background:#0d2137;border:1px solid #388bfd;
+             border-radius:8px;padding:14px;text-align:center;">
+          <p style="color:#388bfd;font-size:18pt;font-weight:700;margin:0;">Nov '24</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">Anthropic launches MCP as open standard</p>
+        </div>
+        <div class="fragment fade-up" style="background:#0d2914;border:1px solid #3fb950;
+             border-radius:8px;padding:14px;text-align:center;">
+          <p style="color:#3fb950;font-size:18pt;font-weight:700;margin:0;">Mar '25</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">OpenAI adopts MCP; deprecates Assistants API</p>
+        </div>
+        <div class="fragment fade-up" style="background:#2d1b00;border:1px solid #d29922;
+             border-radius:8px;padding:14px;text-align:center;">
+          <p style="color:#d29922;font-size:18pt;font-weight:700;margin:0;">Dec '25</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">Donated to Linux Foundation — vendor-neutral</p>
+        </div>
+        <div class="fragment fade-up" style="background:#2d0e0e;border:1px solid #f47067;
+             border-radius:8px;padding:14px;text-align:center;">
+          <p style="color:#f47067;font-size:18pt;font-weight:700;margin:0;">6,400+</p>
+          <p style="color:#8b949e;font-size:9pt;margin:4px 0 0 0;">MCP servers registered, Feb 2026</p>
+        </div>
+      </div>
+      <blockquote class="fragment fade-up">
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">"Running an MCP server has become almost as popular as running a web server."</p>
+        <cite>— The New Stack, 2026</cite>
+      </blockquote>
+    </div>
+    <aside class="notes">
+      [[ click through each date card ]]
+      OpenAI adopted a competitor's standard within 4 months — that tells you everything.
+      When rivals agree on the same standard, it becomes infrastructure.
+      MCP is now in the same category as HTTP or USB-C.
+      [[ if anyone asks: yes, you can build an MCP server today in TypeScript or Python ]]
+    </aside>
+  </section>
+
+</section><!-- end MCP stack -->
+
+
+<!-- ═══════════════════════════════════
+     SECTION: A2A
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider">
+  <p style="color:#bc8cff;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 05</p>
+  <h1>What's Next: A2A</h1>
+  <p style="color:#8b949e;font-size:15pt;">Agent-to-Agent communication</p>
+  <aside class="notes">[[ chapter opener — this is forward-looking, frame it as "what comes after MCP" ]]</aside>
+</section>
+
+<section>
+  <section>
+    <h2>What's Next: Agent-to-Agent</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:20px;">
+        <div>
+          <p style="color:#d29922;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">MCP — TODAY</p>
+          <ul>
+            <li class="fragment fade-up">AI connects to <strong>tools</strong></li>
+            <li class="fragment fade-up">Agent uses GitHub, Slack, your database</li>
+            <li class="fragment fade-up">One agent, many tools</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:#bc8cff;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">A2A — COMING</p>
+          <ul>
+            <li class="fragment fade-up">AI connects to <strong>other AI</strong></li>
+            <li class="fragment fade-up">Agents delegate tasks to each other</li>
+            <li class="fragment fade-up">Dynamic teams — not just tools</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fragment fade-up" style="background:#1b1030;border:1px solid #bc8cff;
+           border-radius:8px;padding:16px 18px;">
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          A "Travel Agent" no longer just returns flight data — it
+          <span style="color:#bc8cff;">negotiates with a "Booking Agent"</span> autonomously.
+          Google shipped an A2A spec in 2025. Still early — but this is the direction.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      Today AI connects to tools. Next, AI connects to other AI.
+      [[ contrast the two columns — left is now, right is coming ]]
+      Agents will delegate work to other agents dynamically.
+      This is still early. But Google already shipped a spec for it in 2025.
+      [[ no need to go deep — just plant the idea and move on ]]
+    </aside>
+  </section>
+</section><!-- end A2A -->
+
+
+<!-- ═══════════════════════════════════
+     SECTION: MULTI-AGENT
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider">
+  <p style="color:#bc8cff;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 06</p>
+  <h1>Multi-Agent Systems</h1>
+  <p style="color:#8b949e;font-size:15pt;">When agents work together</p>
+  <aside class="notes">[[ chapter opener ]]</aside>
+</section>
+
+<section>
+  <section>
+    <h2>Why Multiple Agents?</h2>
+    <div class="content">
+      <p style="color:#8b949e;font-size:12pt;margin-bottom:14px;">One agent hits limits. A team breaks through them:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #bc8cff;border-radius:8px;padding:14px;">
+          <p style="color:#bc8cff;font-size:10pt;margin:0 0 4px 0;font-family:'JetBrains Mono',monospace;">CONTEXT LIMITS</p>
+          <p style="font-size:12pt;color:#e6edf3;margin:0;">One agent can't hold an entire large codebase at once</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #388bfd;border-radius:8px;padding:14px;">
+          <p style="color:#388bfd;font-size:10pt;margin:0 0 4px 0;font-family:'JetBrains Mono',monospace;">PARALLELISM</p>
+          <p style="font-size:12pt;color:#e6edf3;margin:0;">Run ten tasks at the same time instead of one by one</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #3fb950;border-radius:8px;padding:14px;">
+          <p style="color:#3fb950;font-size:10pt;margin:0 0 4px 0;font-family:'JetBrains Mono',monospace;">SPECIALISATION</p>
+          <p style="font-size:12pt;color:#e6edf3;margin:0;">A security agent, a code agent, a docs agent — each an expert</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #d29922;border-radius:8px;padding:14px;">
+          <p style="color:#d29922;font-size:10pt;margin:0 0 4px 0;font-family:'JetBrains Mono',monospace;">CROSS-CHECKING</p>
+          <p style="font-size:12pt;color:#e6edf3;margin:0;">Agent A answers, Agent B critiques — fewer mistakes</p>
+        </div>
+      </div>
+      <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+           border-radius:8px;padding:14px 18px;">
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          <strong>The pattern:</strong> one agent plans →
+          <span style="color:#388bfd;">others execute in parallel.</span>
+          Like a manager and a team.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ click through each card ]]
+      Think of a software team — one person can only do so much.
+      A team with different roles delivers more, faster.
+      Multi-agent works the same way. One agent plans, others execute.
+      [[ the bottom summary box is the key line to land ]]
+    </aside>
+  </section>
+</section><!-- end multi-agent -->
+
+
+<!-- ═══════════════════════════════════
+     SECTION: RISKS
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider">
+  <p style="color:#f47067;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 07</p>
+  <h1>Failures &amp; Risks</h1>
+  <p style="color:#8b949e;font-size:15pt;">What actually goes wrong</p>
+  <aside class="notes">[[ chapter opener — shift tone here: honest, not scary ]]</aside>
+</section>
+
+<section>
+
+  <!-- Real Failures -->
+  <section>
+    <h2>Things That Actually Went Wrong</h2>
+    <div class="content">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="fragment fade-up" style="background:#1c0b0b;border:1px solid #f47067;
+             border-radius:8px;padding:14px;display:flex;gap:14px;align-items:flex-start;">
+          <i class="fa-solid fa-trash" style="color:#f47067;font-size:14pt;flex-shrink:0;margin-top:2px;"></i>
+          <div>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 3px 0;">Agent deleted an entire database table</p>
+            <p style="color:#8b949e;font-size:11pt;margin:0;">Asked to "get rid of" a record — deleted the whole table. Ambiguous language plus irreversible action.</p>
+          </div>
+        </div>
+        <div class="fragment fade-up" style="background:#1c0b0b;border:1px solid #f47067;
+             border-radius:8px;padding:14px;display:flex;gap:14px;align-items:flex-start;">
+          <i class="fa-solid fa-infinity" style="color:#f47067;font-size:14pt;flex-shrink:0;margin-top:2px;"></i>
+          <div>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 3px 0;">Infinite loop — $2,000 API bill overnight</p>
+            <p style="color:#8b949e;font-size:11pt;margin:0;">Agent kept retrying a stuck task with no limit set. The bill arrived before anyone noticed.</p>
+          </div>
+        </div>
+        <div class="fragment fade-up" style="background:#1c0b0b;border:1px solid #f47067;
+             border-radius:8px;padding:14px;display:flex;gap:14px;align-items:flex-start;">
+          <i class="fa-solid fa-shield-halved" style="color:#f47067;font-size:14pt;flex-shrink:0;margin-top:2px;"></i>
+          <div>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 3px 0;">MCP tool poisoning — data was stolen</p>
+            <p style="color:#8b949e;font-size:11pt;margin:0;">A malicious MCP server tricked an agent into sending private data to an external endpoint.</p>
+          </div>
+        </div>
+        <div class="fragment fade-up" style="background:#1c0b0b;border:1px solid #f47067;
+             border-radius:8px;padding:14px;display:flex;gap:14px;align-items:flex-start;">
+          <i class="fa-solid fa-arrows-rotate" style="color:#f47067;font-size:14pt;flex-shrink:0;margin-top:2px;"></i>
+          <div>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 3px 0;">Errors compound across agent pipelines</p>
+            <p style="color:#8b949e;font-size:11pt;margin:0;">Agent A is wrong → Agent B builds on it → Agent C reports the wrong answer confidently.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ click through each failure card — let each one land before moving on ]]
+      These are real incidents, not hypotheticals.
+      The database deletion: ambiguous language plus irreversible action.
+      The loop: no cost limit set. Bill arrived before anyone noticed.
+      MCP poisoning: a new attack surface most teams are not thinking about yet.
+      Error compounding: the scariest one — confident wrong answers, all the way down.
+      [[ the lesson: safety is not optional, it is engineering ]]
+    </aside>
+  </section>
+
+  <!-- Safety Patterns -->
+  <section>
+    <h2>How to Build Safer Agents</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #7ee787;border-radius:8px;padding:16px;">
+          <p style="color:#7ee787;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 6px 0;">HUMAN IN THE LOOP</p>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Require approval before any irreversible action</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #388bfd;border-radius:8px;padding:16px;">
+          <p style="color:#388bfd;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 6px 0;">LEAST PRIVILEGE</p>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Only grant the tools the agent actually needs</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #d29922;border-radius:8px;padding:16px;">
+          <p style="color:#d29922;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 6px 0;">CIRCUIT BREAKERS</p>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Set max retries and spending limits before you deploy</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #f47067;border-radius:8px;padding:16px;">
+          <p style="color:#f47067;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 6px 0;">AUDIT LOGS</p>
+          <p style="color:#e6edf3;font-size:13pt;margin:0;">Always know exactly what the agent did and why</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ click through each card ]]
+      Start with human-in-the-loop. Remove it only when you trust the agent in that specific context.
+      Least-privilege: only give the agent what it absolutely needs.
+      Circuit breakers: set a max spend and max retries before you deploy — not after.
+      Audit logs: if you cannot explain what the agent did, you cannot fix it when it goes wrong.
+      [[ these are engineering patterns, not theory — you can implement all four this week ]]
+    </aside>
+  </section>
+
+</section><!-- end risks stack -->
+
+
+<!-- ═══════════════════════════════════
+     SECTION: THE OBVIOUS QUESTION
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider"
+  data-background-gradient="linear-gradient(135deg,#0d1117 0%,#1a0d0d 100%)">
+  <p style="color:#ffa657;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+     font-family:'JetBrains Mono',monospace;">Chapter 08</p>
+  <h1 style="color:#e6edf3;">Let's address<br>the obvious question.</h1>
+  <aside class="notes">[[ pause before advancing — let the chapter title sit for a moment ]]</aside>
+</section>
+
+<section>
+
+  <!-- The question -->
+  <section class="section-divider" data-state="is-section-divider" data-background-color="#0d1117">
+    <div style="text-align:center;max-width:800px;">
+      <p class="fragment fade-up" style="color:#8b949e;font-size:20pt;font-weight:300;margin-bottom:20px;">
+        If AI can plan, execute,<br>and interact with systems…
+      </p>
+      <p class="fragment fade-up" style="color:#e6edf3;font-size:32pt;font-weight:700;margin:0;">
+        What happens to developers?
+      </p>
+    </div>
+    <aside class="notes">
+      [[ read the first line slowly, then pause ]]
+      [[ do not fill the silence after "What happens to developers?" — let it sit ]]
+    </aside>
+  </section>
+
+  <!-- The honest answer -->
+  <section class="section-divider" data-state="is-section-divider" data-background-color="#0d1117">
+    <div style="text-align:center;max-width:820px;">
+      <p class="fragment fade-up" style="color:#f47067;font-size:22pt;font-weight:300;
+         line-height:1.5;margin-bottom:28px;">
+        AI is <strong>not</strong> replacing developers.
+      </p>
+      <p class="fragment fade-up" style="color:#e6edf3;font-size:26pt;font-weight:600;
+         line-height:1.4;margin:0;">
+        But it <em>is</em> changing<br>what developers do.
+      </p>
+    </div>
+    <aside class="notes">
+      AI is not replacing developers.
+      [[ pause after the first line ]]
+      But it is changing what developers do.
+      [[ the first line is reassurance. the second is the real message. do not rush it ]]
+    </aside>
+  </section>
+
+  <!-- React Bridge — DO NOT SIMPLIFY -->
+  <section>
+    <h2>You Already Have the Right Mental Model</h2>
+    <div class="content">
+      <p style="color:#8b949e;font-size:13pt;margin-bottom:16px;">
+        As React developers, you already think in <strong>systems</strong> — not just lines of code:
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;">
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-left:3px solid #61dafb;border-radius:8px;padding:16px;">
+          <p style="color:#61dafb;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 8px 0;">REACT THINKING</p>
+          <ul style="margin:0;">
+            <li style="color:#e6edf3;font-size:12pt;">Components with clear inputs &amp; outputs</li>
+            <li style="color:#e6edf3;font-size:12pt;">State flows in one direction</li>
+            <li style="color:#e6edf3;font-size:12pt;">Side effects are isolated</li>
+            <li style="color:#e6edf3;font-size:12pt;">Compose small pieces into large systems</li>
+          </ul>
+        </div>
+        <div class="fragment fade-up" style="background:#0d2137;border:1px solid #388bfd;
+             border-left:3px solid #388bfd;border-radius:8px;padding:16px;">
+          <p style="color:#388bfd;font-size:10pt;font-family:'JetBrains Mono',monospace;margin:0 0 8px 0;">AGENT THINKING</p>
+          <ul style="margin:0;">
+            <li style="color:#e6edf3;font-size:12pt;">Agents with clear goals &amp; tool access</li>
+            <li style="color:#e6edf3;font-size:12pt;">Information flows between agents</li>
+            <li style="color:#e6edf3;font-size:12pt;">Actions are bounded &amp; observable</li>
+            <li style="color:#e6edf3;font-size:12pt;">Compose specialists into pipelines</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fragment fade-up" style="background:#0d2914;border:1px solid #3fb950;
+           border-radius:8px;padding:14px 18px;">
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          Your instinct for <strong style="color:#3fb950;">component boundaries, data flow, and side-effect isolation</strong>
+          — that is exactly the mental model for building reliable agent systems.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ this is the most personal slide for this audience — take your time ]]
+      You already think in components, state, effects, and composition.
+      That is exactly how you think about agent systems.
+      Components = agents. Props = inputs. State = memory. Effects = tool calls.
+      You are not starting from zero. You are translating.
+      [[ read the green callout box out loud ]]
+    </aside>
+  </section>
+
+  <!-- Transformation Timeline -->
+  <section>
+    <h2>
+      We Are Moving From Writing Code…<br>
+      <span style="color:#388bfd;font-size:21pt;font-weight:400;">to Directing Systems That Write Code</span>
+    </h2>
+    <div class="content">
+      <div style="position:relative;padding-top:8px;">
+        <div style="position:absolute;left:50%;top:20px;bottom:20px;width:2px;
+             background:linear-gradient(to bottom,#388bfd,#3fb950);transform:translateX(-50%);"></div>
+        <!-- Row 1 -->
+        <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:13px;align-items:center;">
+          <div class="fragment fade-right" style="background:#161b22;border:1px solid #30363d;
+               border-radius:8px;padding:10px 14px;text-align:right;">
+            <p style="color:#8b949e;font-size:9pt;margin:0 0 2px 0;">BEFORE</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Writing every line of code</p>
+          </div>
+          <div style="text-align:center;z-index:1;">
+            <div style="width:11px;height:11px;background:#388bfd;border-radius:50%;margin:0 auto;border:2px solid #0d1117;"></div>
+          </div>
+          <div class="fragment fade-left" style="background:#0d2137;border:1px solid #388bfd;
+               border-radius:8px;padding:10px 14px;">
+            <p style="color:#388bfd;font-size:9pt;margin:0 0 2px 0;">AFTER</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Reviewing &amp; guiding AI-written code</p>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:13px;align-items:center;">
+          <div class="fragment fade-right" style="background:#161b22;border:1px solid #30363d;
+               border-radius:8px;padding:10px 14px;text-align:right;">
+            <p style="color:#8b949e;font-size:9pt;margin:0 0 2px 0;">BEFORE</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Manually running deploys &amp; scripts</p>
+          </div>
+          <div style="text-align:center;z-index:1;">
+            <div style="width:11px;height:11px;background:#3fb950;border-radius:50%;margin:0 auto;border:2px solid #0d1117;"></div>
+          </div>
+          <div class="fragment fade-left" style="background:#0d2914;border:1px solid #3fb950;
+               border-radius:8px;padding:10px 14px;">
+            <p style="color:#3fb950;font-size:9pt;margin:0 0 2px 0;">AFTER</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Orchestrating agent-powered pipelines</p>
+          </div>
+        </div>
+        <!-- Row 3 -->
+        <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:13px;align-items:center;">
+          <div class="fragment fade-right" style="background:#161b22;border:1px solid #30363d;
+               border-radius:8px;padding:10px 14px;text-align:right;">
+            <p style="color:#8b949e;font-size:9pt;margin:0 0 2px 0;">BEFORE</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Searching docs, writing boilerplate</p>
+          </div>
+          <div style="text-align:center;z-index:1;">
+            <div style="width:11px;height:11px;background:#d29922;border-radius:50%;margin:0 auto;border:2px solid #0d1117;"></div>
+          </div>
+          <div class="fragment fade-left" style="background:#2d1b00;border:1px solid #d29922;
+               border-radius:8px;padding:10px 14px;">
+            <p style="color:#d29922;font-size:9pt;margin:0 0 2px 0;">AFTER</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Specifying intent, reviewing output</p>
+          </div>
+        </div>
+        <!-- Row 4 -->
+        <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:center;">
+          <div class="fragment fade-right" style="background:#161b22;border:1px solid #30363d;
+               border-radius:8px;padding:10px 14px;text-align:right;">
+            <p style="color:#8b949e;font-size:9pt;margin:0 0 2px 0;">BEFORE</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Solo dev = solo output</p>
+          </div>
+          <div style="text-align:center;z-index:1;">
+            <div style="width:11px;height:11px;background:#bc8cff;border-radius:50%;margin:0 auto;border:2px solid #0d1117;"></div>
+          </div>
+          <div class="fragment fade-left" style="background:#1b1030;border:1px solid #bc8cff;
+               border-radius:8px;padding:10px 14px;">
+            <p style="color:#bc8cff;font-size:9pt;margin:0 0 2px 0;">AFTER</p>
+            <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0;">Solo dev + agents = team output</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ click through each row — left appears first, then right ]]
+      Walk through each one slowly. Let the contrast land before clicking again.
+      [[ the last row — solo dev = team output — is the most powerful. pause on it ]]
+    </aside>
+  </section>
+
+  <!-- Solo Dev Story -->
+  <section>
+    <h2>Real World: One Developer, Ten Agents</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div>
+          <p style="color:#ffa657;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">THE STORY</p>
+          <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;">
+            <p style="color:#e6edf3;font-size:13pt;line-height:1.6;margin:0;">
+              A solo developer shipped a full SaaS product in
+              <strong style="color:#ffa657;">6 weeks</strong> —
+              a task that previously needed a team of 4–5 people.
+            </p>
+            <p style="color:#8b949e;font-size:11pt;margin:14px 0 0 0;">
+              He ran 10 specialised agents in parallel.
+            </p>
+          </div>
+        </div>
+        <div>
+          <p style="color:#7ee787;font-size:10pt;font-family:'JetBrains Mono',monospace;margin-bottom:10px;">THE AGENT TEAM</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-code" style="color:#388bfd;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Frontend</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-server" style="color:#3fb950;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Backend</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-flask" style="color:#d29922;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Testing</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-file-lines" style="color:#bc8cff;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Docs</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-shield" style="color:#f47067;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Security</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-cloud" style="color:#388bfd;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Infrastructure</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-magnifying-glass" style="color:#3fb950;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">SEO</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-palette" style="color:#d29922;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Design QA</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-envelope" style="color:#bc8cff;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Onboarding emails</p>
+            </div>
+            <div class="fragment fade-up" style="display:flex;align-items:center;gap:8px;
+                 background:#161b22;border:1px solid #30363d;border-radius:6px;padding:7px 10px;">
+              <i class="fa-solid fa-headset" style="color:#ffa657;font-size:10pt;width:14px;flex-shrink:0;"></i>
+              <p style="color:#e6edf3;font-size:10pt;margin:0;">Support copy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fragment fade-up" style="margin-top:14px;background:#0d2137;border:1px solid #388bfd;
+           border-radius:8px;padding:12px 16px;">
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          His job: <strong style="color:#388bfd;">define goals, review outputs, make judgment calls.</strong>
+          The agents did the execution.
+        </p>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ click through the agent grid one by one — let the audience count them ]]
+      One developer. Ten agents. Six weeks. Full SaaS.
+      [[ point at the blue bar at the bottom ]]
+      His job was to define goals, review outputs, and make judgment calls.
+      The agents did the execution.
+      You still need to know what good code looks like. You cannot direct what you do not understand.
+      [[ if anyone asks: this was posted on Indie Hackers in early 2026 ]]
+    </aside>
+  </section>
+
+  <!-- The Reframe -->
+  <section class="section-divider" data-state="is-section-divider" data-background-color="#0d1117">
+    <div style="text-align:center;max-width:900px;">
+      <p class="fragment fade-up" style="color:#8b949e;font-size:18pt;font-weight:300;
+         line-height:1.6;margin-bottom:28px;">
+        So the question is not:<br>
+        <span style="color:#f47067;font-weight:600;">"Will AI replace developers?"</span>
+      </p>
+      <p class="fragment fade-up" style="color:#e6edf3;font-size:24pt;font-weight:600;
+         line-height:1.5;margin:0;">
+        The real question is:<br>
+        <span style="color:#7ee787;">"Can developers adapt to directing<br>systems that write code?"</span>
+      </p>
+    </div>
+    <aside class="notes">
+      [[ read the red line out loud, then pause ]]
+      [[ then read the green line out loud ]]
+      [[ the old question closes doors. the new question opens them. do not explain this — just move into the next slide with energy ]]
+    </aside>
+  </section>
+
+  <!-- Skills That Matter -->
+  <section>
+    <h2>The Skills That Matter Now</h2>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:14px;text-align:center;">
+          <i class="fa-solid fa-sitemap" style="color:#388bfd;font-size:17pt;margin-bottom:7px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 4px 0;">Systems Design</p>
+          <p style="color:#8b949e;font-size:10pt;margin:0;">Orchestration, parallelism, agent boundaries</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:14px;text-align:center;">
+          <i class="fa-solid fa-plug" style="color:#d29922;font-size:17pt;margin-bottom:7px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 4px 0;">MCP Development</p>
+          <p style="color:#8b949e;font-size:10pt;margin:0;">Build once, every AI benefits — high demand now</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:14px;text-align:center;">
+          <i class="fa-solid fa-flask" style="color:#3fb950;font-size:17pt;margin-bottom:7px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 4px 0;">Evals &amp; Testing</p>
+          <p style="color:#8b949e;font-size:10pt;margin:0;">Testing systems that never give the same output twice</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:14px;text-align:center;">
+          <i class="fa-solid fa-shield" style="color:#f47067;font-size:17pt;margin-bottom:7px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 4px 0;">AI Security</p>
+          <p style="color:#8b949e;font-size:10pt;margin:0;">Prompt injection, sandboxing, least-privilege</p>
+        </div>
+        <div class="fragment fade-up" style="background:#161b22;border:1px solid #30363d;
+             border-radius:8px;padding:14px;text-align:center;">
+          <i class="fa-solid fa-magnifying-glass-chart" style="color:#bc8cff;font-size:17pt;margin-bottom:7px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 4px 0;">Observability</p>
+          <p style="color:#8b949e;font-size:10pt;margin:0;">Trace decisions — know exactly what happened</p>
+        </div>
+        <div class="fragment fade-up" style="background:#0d2137;border:1px solid #388bfd;
+             border-radius:8px;padding:14px;text-align:center;">
+          <i class="fa-solid fa-brain" style="color:#ffa657;font-size:17pt;margin-bottom:7px;display:block;"></i>
+          <p style="color:#e6edf3;font-size:12pt;font-weight:600;margin:0 0 4px 0;">Directing AI</p>
+          <p style="color:#8b949e;font-size:10pt;margin:0;"><span style="color:#ffa657;">The meta-skill</span> — clear goals, good constraints, trust but verify</p>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      [[ click through each card ]]
+      These are concrete, learnable skills — not soft skills.
+      [[ point at the highlighted blue card last ]]
+      Directing AI is the meta-skill. Everything else sits under it.
+      If you can only pick one to start: build an MCP server this week.
+      It teaches architecture, tool design, and agent integration in one project.
+      [[ the supply of people who can do this is genuinely low right now ]]
+    </aside>
+  </section>
+
+</section><!-- end developer future -->
+
+
+<!-- ═══════════════════════════════════
+     TAKEAWAYS
+═══════════════════════════════════ -->
+<section>
+  <h2>What to Take Away</h2>
+  <div class="content">
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="fragment fade-up" style="display:flex;gap:14px;align-items:center;
+           background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px 16px;">
+        <span style="font-size:18pt;flex-shrink:0;">🔄</span>
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          AI moved from <strong>responding</strong> → <strong>doing</strong> → <strong>coordinating</strong>.
+          That is not hype — it is shipping in production today.
+        </p>
+      </div>
+      <div class="fragment fade-up" style="display:flex;gap:14px;align-items:center;
+           background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px 16px;">
+        <span style="font-size:18pt;flex-shrink:0;">🔌</span>
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          <strong>MCP is the new HTTP for AI.</strong>
+          Learn to build MCP servers. The demand is real and the supply is low.
+        </p>
+      </div>
+      <div class="fragment fade-up" style="display:flex;gap:14px;align-items:center;
+           background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px 16px;">
+        <span style="font-size:18pt;flex-shrink:0;">⚠️</span>
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          Agents <strong>fail in real ways.</strong>
+          Safety is not optional — build it in from day one.
+        </p>
+      </div>
+      <div class="fragment fade-up" style="display:flex;gap:14px;align-items:center;
+           background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px 16px;">
+        <span style="font-size:18pt;flex-shrink:0;">🧑‍💻</span>
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          Your role is <strong>evolving, not disappearing.</strong>
+          Systems thinkers who design agent architectures are in high demand.
+        </p>
+      </div>
+      <div class="fragment fade-up" style="display:flex;gap:14px;align-items:center;
+           background:#0d2137;border:1px solid #388bfd;border-radius:8px;padding:12px 16px;">
+        <span style="font-size:18pt;flex-shrink:0;">🚀</span>
+        <p style="color:#e6edf3;font-size:13pt;margin:0;">
+          The best engineers of 2026 <strong>orchestrate teams of AI</strong>
+          the same way they orchestrate distributed systems.
+        </p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    [[ click through each point — read them out loud, they are short ]]
+    [[ leave them with one question: ]]
+    "What is one workflow in your job that an agent could handle a step of?"
+    [[ then point to the three resources on the closing slide ]]
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CLOSE
+═══════════════════════════════════ -->
+<section class="section-divider" data-state="is-section-divider"
+  data-background-gradient="linear-gradient(135deg,#0d1117 0%,#0d1b2a 60%,#0d2137 100%)">
+  <div style="text-align:center;">
+    <p style="color:#7ee787;font-size:11pt;letter-spacing:.25em;text-transform:uppercase;
+       font-family:'JetBrains Mono',monospace;margin-bottom:18px;">Questions &amp; Discussion</p>
+    <h1 style="font-size:44pt;color:#e6edf3;margin-bottom:18px;">
+      Build the agent.<br><span style="color:#79c0ff;">Don't just use it.</span>
+    </h1>
+    <div style="margin-top:32px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+      <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 20px;text-align:left;">
+        <p style="color:#7ee787;font-size:9pt;margin:0 0 3px 0;font-family:'JetBrains Mono',monospace;">START WITH</p>
+        <p style="color:#e6edf3;font-size:12pt;margin:0;">Claude Code or Cursor</p>
+      </div>
+      <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 20px;text-align:left;">
+        <p style="color:#388bfd;font-size:9pt;margin:0 0 3px 0;font-family:'JetBrains Mono',monospace;">THEN LEARN</p>
+        <p style="color:#e6edf3;font-size:12pt;margin:0;">modelcontextprotocol.io</p>
+      </div>
+      <div style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 20px;text-align:left;">
+        <p style="color:#d29922;font-size:9pt;margin:0 0 3px 0;font-family:'JetBrains Mono',monospace;">GO DEEPER</p>
+        <p style="color:#e6edf3;font-size:12pt;margin:0;">LangGraph, CrewAI, AutoGen</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Even this presentation was created using AI tools.
+    AI helped generate the structure and content, and Reveal.js was used to present it.
+    This shows how workflows are changing — AI is becoming part of how we build things.
+    [[ point to the three resource cards ]]
+    [[ leave this slide visible during Q&A — open the floor ]]
+  </aside>
+</section>
+
+
+</div><!-- end .slides -->
+</div><!-- end .reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/zoom/zoom.js"></script>
+
+<script>
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    slideNumber: 'c/t',
+    hash: true,
+    transition: 'slide',
+    transitionSpeed: 'default',
+    center: false,
+    autoSlide: 0,
+    loop: false,
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+  });
+</script>
+</body>
+</html>
